@@ -178,7 +178,9 @@
 							return;
 						}
 
-						urlParams.name = file.target_name || file.name;
+						if (up.settings.url_params) {
+							urlParams.name = file.target_name || file.name;
+						}
 
 						// Only send chunk parameters if chunk size is defined
 						if (chunkSize) {

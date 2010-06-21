@@ -158,7 +158,7 @@
 				uploader.bind("UploadFile", function(up, file) {
 					var settings = up.settings;
 
-					getFlashObj().uploadFile(lookup[file.id], plupload.buildUrl(settings.url, {name : file.target_name || file.name}), {
+					getFlashObj().uploadFile(lookup[file.id], plupload.buildUrl(settings.url, (up.settings.url_params ? {name : file.target_name || file.name} : {})), {
 						chunk_size : settings.chunk_size,
 						width : resize.width,
 						height : resize.height,

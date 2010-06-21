@@ -589,7 +589,8 @@
 			chunk_size : 0,
 			multi_selection : true,
 			file_data_name : 'file',
-			filters : []
+			filters : [],
+			url_params: true
 		}, settings);
 
 		// Private methods

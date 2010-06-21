@@ -243,7 +243,7 @@
 						}
 
 						// Standard arguments
-						args = {name : file.target_name || file.name};
+						args = (up.settings.url_params ? {name : file.target_name || file.name} : {});
 
 						// Only add chunking args if needed
 						if (settings.chunk_size && features.chunking) {

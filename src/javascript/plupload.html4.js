@@ -302,7 +302,7 @@
 
 				// Store action
 				form.tmpAction = form.getAttribute("action");
-				form.setAttribute("action", plupload.buildUrl(up.settings.url, {name : file.target_name || file.name}));
+				form.setAttribute("action", plupload.buildUrl(up.settings.url, (up.settings.url_params ? {name : file.target_name || file.name} : {})));
 
 				// Store Target
 				form.tmpTarget = form.getAttribute("target");
