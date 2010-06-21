@@ -719,7 +719,7 @@
 
 				// Add files to queue
 				self.bind('FilesAdded', function(up, selected_files) {
-					var i, file, count = 0, extensionsMap, filters = settings.filters;
+					var i, file, count = 0, extensionsMap, filters = settings.filters, file_validation;
 
 					// Convert extensions to map
 					if (filters && filters.length) {
@@ -738,8 +738,9 @@
 						file.percent = 0;
 						file.status = plupload.QUEUED;
 
-						// Invalid file extension
-						if (extensionsMap && !extensionsMap[file.name.toLowerCase().split('.').slice(-1)]) {
+						file_validation = file.name.toLowerCase().split('.');
+						// Invalid file extension (supported extensions: .%s and .%s.%s)
+						if (extensionsMap && !extensionsMap[file_validation.slice(-1)] && !extensionsMap[file_validation.slice(-2).join('.')]) {
 							up.trigger('Error', {
 								code : plupload.FILE_EXTENSION_ERROR,
 								message : 'File extension error.',
